@@ -18,7 +18,7 @@ export const register = async (req, res) => {
       picture,
     } = req.body;
 
-    console.log({firstName: firstName, lastName: lastName, email: email, picture: req.file.destination })
+    console.log({firstName: firstName, lastName: lastName, email: email, picture: picturePath})
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
@@ -27,7 +27,7 @@ export const register = async (req, res) => {
       lastName,
       email,
       password: passwordHash,
-      picturePath: req.file.destination,
+      picturePath,
       friends,
       location,
       occupation,
